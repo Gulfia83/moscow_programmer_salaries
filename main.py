@@ -72,10 +72,6 @@ def predict_rub_salary_hh(salary):
     predicted_salary = predict_salary(salary['from'], salary['to'])
     return predicted_salary
 
-def predict_rub_salary_sj(vacancy):
-    predicted_salary = predict_salary(vacancy['payment_from'], vacancy['payment_to'])
-    return predicted_salary
-
 def fetch_statistic_hh_programmer_salary(languages):
     hh_vacancies_salaries = {}
     for language in languages:
@@ -103,7 +99,7 @@ def fetch_statistic_sj_programmer_salary(languages, api_key):
 
         salaries = []
         for vacancy in vacancies:
-            predicted_salary = predict_rub_salary_sj(vacancy)
+            predicted_salary = predict_salary(vacancy['payment_from'], vacancy['payment_to'])
             if predicted_salary:
                 salaries.append(predicted_salary)
 
