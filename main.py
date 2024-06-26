@@ -76,7 +76,7 @@ def predict_rub_salary_sj(vacancy):
     predicted_salary = predict_salary(vacancy['payment_from'], vacancy['payment_to'])
     return predicted_salary
 
-def fetch_hh_average_programmer_salary(languages):
+def fetch_statistic_hh_programmer_salary(languages):
     hh_vacancies_salaries = {}
     for language in languages:
         vacancies, total_vacancies = get_hh_vacancies(language)
@@ -96,7 +96,7 @@ def fetch_hh_average_programmer_salary(languages):
 
     return hh_vacancies_salaries
 
-def fetch_sj_average_programmer_salary(languages, api_key):
+def fetch_statistic_sj_programmer_salary(languages, api_key):
     sj_vacancies_salaries = {}
     for language in languages:
         vacancies, total_vacancies = get_sj_vacancies(language, api_key)
@@ -135,12 +135,12 @@ def main():
 
     api_key = os.environ['SUPER_JOB_API_KEY']
 
-    sj_average_programmer_salary = fetch_sj_average_programmer_salary(languages, api_key)
-    hh_average_programmer_salary = fetch_hh_average_programmer_salary(languages)
+    sj_statistic_programmer_salary = fetch_statistic_sj_programmer_salary(languages, api_key)
+    hh_statistic_programmer_salary = fetch_statistic_hh_programmer_salary(languages)
 
-    print_table(sj_average_programmer_salary, 'SuperJob Moscow')
+    print_table(sj_statistic_programmer_salary, 'SuperJob Moscow')
 
-    print_table(hh_average_programmer_salary, 'HeadHunter Moscow')
+    print_table(hh_statistic_programmer_salary, 'HeadHunter Moscow')
 
 if __name__ == '__main__':
     main()
