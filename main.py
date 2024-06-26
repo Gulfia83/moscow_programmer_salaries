@@ -60,14 +60,14 @@ def predict_salary(payment_from, payment_to):
     if payment_to and payment_from:
         return (payment_from + payment_to) / 2
 
-    elif payment_from == None:
-        return payment_to * 0.8
-
-    elif payment_to:
+    elif payment_from:
         return payment_from * 1.2
 
+    elif payment_to:
+        return payment_to * 0.8
+
 def predict_rub_salary_hh(salary):
-    if salary == None or salary['currency'] != 'RUR':
+    if not salary or salary['currency'] != 'RUR':
         return None
     predicted_salary = predict_salary(salary['from'], salary['to'])
     return predicted_salary
