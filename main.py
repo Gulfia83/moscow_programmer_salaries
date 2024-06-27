@@ -50,7 +50,7 @@ def get_sj_vacancies(language, api_key):
         response.raise_for_status()
         vacancy_descriptions = response.json()
         all_vacancies.extend(vacancy_descriptions['objects'])
-        if vacancy_descriptions['more'] == False:
+        if not vacancy_descriptions['more']:
             break
         page += 1
 
